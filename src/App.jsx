@@ -2,17 +2,30 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //Routes 
 import Dashboard, { dashboardLoader } from "./pages/Dashboard";
+import Error from "./pages/Error";
+import Main, {mainLoader} from "./layouts/Main";
+import About from "./pages/About";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard/>,
-    loader: dashboardLoader
+    element: <Main/>,
+    loader: mainLoader,
+    errorElement: <Error/>,
+    children: [
+      {
+        index: true,
+        element: <Dashboard/>,
+        loader: dashboardLoader,
+        errorElement: <Error/>
+      },
+      {
+        path: "about",
+        element: <About/>
+      },
+    ],
   },
-  {
-    path: "/about",
-    element: <h1>About</h1>,
-  },
+  
 ]);
 
 function App() {
