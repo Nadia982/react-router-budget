@@ -2,7 +2,7 @@
 import { useLoaderData } from "react-router-dom";
 
 //helper functions
-import { fetchData } from "../helpers";
+import { createBudget, fetchData } from "../helpers";
 
 //components
 import Intro from "../components/Intro";
@@ -36,14 +36,16 @@ export async function dashboardAction({ request }) {
   if (_action === "createBudget") {
     try {
       //create budget
-      return toast.success(`Budget created`);
+      createBudget({
+        name: values.newBudget,
+        amount: values.newBudgetAmount,
+      })
+      return toast.success("Budget created");
     } catch (e) {
       throw new Error("There was a problem creating your budget.");
     }
   }
 }
-
-
 
 const Dashboard = () => {
   const { userName, budgets } = useLoaderData();
