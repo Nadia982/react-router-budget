@@ -1,5 +1,9 @@
+
+
+//wait between 0 and 800 milliseconds (used for the submit button)
 export const wait = () => new Promise((res) => setTimeout(res, Math.random() * 800))
 
+//generate random color 
 export const generateRandomColor = () => {
     const existingBudgetLength = fetchData("budgets")?.length ?? 0;
     return `${existingBudgetLength * 34} 65% 50%`
@@ -27,4 +31,17 @@ export const createBudget = ({name, amount}) => {
 export const deleteItem = ({key}) => {
     return localStorage.removeItem(key);
 
+}
+
+//create an expense 
+export const createExpense = ({name, amount, budgetId}) => {
+    const newItem = {
+        id: crypto.randomUUID(),
+        name: name,
+        createdAt: Date.now(),
+        amount: +amount, 
+        budgetId: budgetId,    
+    }
+        const existingExpenses = fetchData("expenses") ?? [];
+        return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]));
 }
