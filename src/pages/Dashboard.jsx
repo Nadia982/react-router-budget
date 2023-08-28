@@ -7,6 +7,7 @@ import { createBudget, fetchData, wait } from "../helpers";
 //components
 import Intro from "../components/Intro";
 import AddBudgetForm from "./../components/AddBudgetForm";
+import AddExpenseForm from './../components/AddExpenseForm';
 
 //library imports
 import { toast } from "react-toastify";
@@ -41,7 +42,7 @@ export async function dashboardAction({ request }) {
       createBudget({
         name: values.newBudget,
         amount: values.newBudgetAmount,
-      })
+      });
       return toast.success("Budget created");
     } catch (e) {
       throw new Error("There was a problem creating your budget.");
@@ -59,12 +60,21 @@ const Dashboard = () => {
             Welcome back, <span className="accent">{userName}</span>
           </h1>
           <div className="grid-sm">
-            {/* {budgets ? () : ()} */}
-            <div className="grid-lg">
-              <div className="flex-lg">
+            {budgets && budgets.length > 0 ? (
+              <div className="grid-lg">
+                <div className="flex-lg">
+                  <AddBudgetForm />
+                  <AddExpenseForm budgets={budgets}/>
+                </div>
+              </div>
+            ) : (
+              <div className="grid-sm">
+                <p>Personal budgeting is the key to financial freedom.</p>
+                <p>Create a budget to get started.</p>
                 <AddBudgetForm />
               </div>
-            </div>
+            )
+            }
           </div>
         </div>
       ) : (
