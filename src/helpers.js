@@ -1,5 +1,3 @@
-
-
 //wait between 0 and 800 milliseconds (used for the submit button)
 export const wait = () => new Promise((res) => setTimeout(res, Math.random() * 800))
 
@@ -46,7 +44,18 @@ export const createExpense = ({name, amount, budgetId}) => {
         return localStorage.setItem("expenses", JSON.stringify([...existingExpenses, newItem]));
 }
 
+//total spent by budget
+export const calculateSpentByBudget = (budgetId) => {
+    const expenses = fetchData("expenses") ?? [];
+    const budgetSpent = expenses.reduce((acc, expense) => {
+        //check if expense ID matches the budget ID. 
+        if(expense.budgetId !== budgetId) return acc;
+        //add the current amount to my total
+        return acc += expense.amount;
 
+    }, 0)
+    return budgetSpent;
+}
 
 //FORMATTING
 
