@@ -1,3 +1,6 @@
+//component import 
+import ExpenseItem from './ExpenseItem';
+
 const Table = ({expenses}) => {
   return (
     <div className="table">
@@ -7,21 +10,17 @@ const Table = ({expenses}) => {
                     {["Name", "Amount", "Date"].map((i, index) => (
                         <th key={index}>
                             {i}
-                        </th>
-                    )) 
-                    }
+                        </th>))}
                 </tr>
             </thead>
             <tbody>
                 {expenses.map((expense) => (
                     <tr key = {expense.id}>
-                        {expense.name}
-                        {/* <ExpenseItem/> */}
+                        <ExpenseItem expense={expense}/>
                         </tr>
                 ))}
 
             </tbody>
-
         </table>
 
     </div>
