@@ -24,7 +24,7 @@ const Intro = () => {
             type="text"
             name="userName"
             required
-            placeholder="What is your name?"
+            placeholder="What is your name/nickname?"
             aria-label="Your name"
             autoComplete="given-name"
           />
