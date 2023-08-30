@@ -94,6 +94,11 @@ h3,
   font-size: var(--fs-400);
 }
 
+.inline {
+  display: inline;
+  max-width: 450px; 
+}
+
 small {
   font-size: var(--fs-200);
   line-height: var(--lh-1);
@@ -101,6 +106,10 @@ small {
 
 p {
   max-width: var(--content);
+}
+
+.p {
+  font-size: 1rem;
 }
 
 /* color utils */
