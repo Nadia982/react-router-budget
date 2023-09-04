@@ -57,6 +57,12 @@ export const calculateSpentByBudget = (budgetId) => {
     return budgetSpent;
 }
 
+//Get all items from local storage
+export const getAllMatchingItems = ({category, key, value}) => {
+    const data = fetchData(category) ?? [];
+    return data.filter(item => item[key] === value);
+}
+
 //FORMATTING
 
 //Format date
