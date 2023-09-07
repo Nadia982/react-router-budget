@@ -56,6 +56,7 @@ export async function dashboardAction({ request }) {
       throw new Error("There was a problem creating your budget.");
     }
   }
+  
   if (_action === "createExpense") {
     createExpense({
       name: values.newExpense,
