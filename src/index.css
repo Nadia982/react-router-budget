@@ -599,6 +599,8 @@ table .btn {
 
 table a {
   text-decoration: none;
+  min-width: 100px;
+  display: inline-block;
   color: hsl(var(--bkg));
   background-color: hsl(var(--accent));
   padding: var(--space-xs) var(--space-sm);

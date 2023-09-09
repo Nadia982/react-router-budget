@@ -2,7 +2,7 @@
 import { formatCurrency, formatPercentage } from './../helpers';
 import { calculateSpentByBudget } from './../helpers';
 
-const BudgetItem = ({ budget }) => {
+const BudgetItem = ({ budget, showDelete = false }) => {
   const { id, amount, name, color } = budget;
   const spent = calculateSpentByBudget(id);
   return (
@@ -19,6 +19,7 @@ const BudgetItem = ({ budget }) => {
         <small>{formatCurrency(spent)} spent</small>
         <small>{formatCurrency(amount-spent)} remaining</small>
       </div>
+      
     </div>
   );
 };
